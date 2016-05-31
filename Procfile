@@ -1,0 +1,1 @@
+web: gunicorn tada.wsgi --log-file -
