@@ -1,0 +1,7 @@
+<h1>{{ channel.name }} Posts</h1>
+
+<ul>
+{% for post in channel.post_set.all %}
+	<li>{{ post.post_text }}</li>
+{% endfor %}
+</ul>
