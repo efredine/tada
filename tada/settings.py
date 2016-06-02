@@ -29,6 +29,7 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = (
+    'bootstrap3',
     'channels.apps.ChannelsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
