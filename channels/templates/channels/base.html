@@ -22,26 +22,11 @@
 	          </div>
 	          <div id="navbar" class="navbar-collapse collapse">
 	            <ul class="nav navbar-nav navbar-right">
-	              <li><a href="/logout">Logout</a></li>
+	              <li><a href="{% url 'logout' %}">Logout</a></li>
 	            </ul>
 	          </div><!--/.nav-collapse -->
 	        </div><!--/.container-fluid -->
 	      </nav>
-	
-	{% comment %}
-    <nav class="navbar navbar-default">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'channels:channel_list' %}">Tada</a>
-        </div>
-        <div id="navbar1" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-				<li><a href="/logout">thing</a></li> 
-				<li><a href="/logout">logout</a></li> 
-            </ul>
-        </div>
-    </nav>
-	
-	{% endcomment %}
 
 
     <h1>{% block title %}(no title){% endblock %}</h1>
