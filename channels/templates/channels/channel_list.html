@@ -1,20 +1,18 @@
-{# Load the tag library #}
+{% extends 'channels/base.html' %}
 {% load bootstrap3 %}
 
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
-
+{% block title %}
 <h1>Channels</h1>
-{% if channel_list %}
-	<ul>
-	{% for channel in channel_list %}
-		<li><a href="{% url 'channels:channel_detail' channel.id %}">{{ channel.name }}</a></li>
-	{% endfor %}
-	</ul>
-{% else %}
-	<p>No channels available.</p>
-{% endif %}
+{% endblock %}
+
+{% block content %}
+	{% if channel_list %}
+		<ul>
+		{% for channel in channel_list %}
+			<li><a href="{% url 'channels:channel_detail' channel.id %}">{{ channel.name }}</a></li>
+		{% endfor %}
+		</ul>
+	{% else %}
+		<p>No channels available.</p>
+	{% endif %}
+{% endblock %}

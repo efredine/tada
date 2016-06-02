@@ -1,7 +1,15 @@
-<h1>{{ channel.name }} Posts</h1>
+{% extends 'channels/base.html' %}
+{% load bootstrap3 %}
 
-<ul>
-{% for post in channel.post_set.all %}
-	<li>{{ post.post_text }}</li>
-{% endfor %}
-</ul>
+{% block title %}
+	<h2>{{ channel.name }}</h2>
+	<h5>Posts:</h5>
+{% endblock %}
+
+{% block content %}
+	<ul>
+	{% for post in channel.post_set.all %}
+		<li>{{ post.post_text }}</li>
+	{% endfor %}
+	</ul>
+{% endblock %}
