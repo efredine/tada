@@ -1,19 +1,26 @@
-{% if form.errors %}
-<p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+{% extends 'bootstrap3/bootstrap3.html' %}
+{% load bootstrap3 %}
 
-{% if next %}
-    {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
-    {% else %}
-    <p>Please login to see this page.</p>
-    {% endif %}
-{% endif %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
-<form method="post" action="/accounts/login/">
-{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
+{% block bootstrap3_content %}
+	<div class="container">
+		{% if next %}
+		    {% if user.is_authenticated %}
+		    <p>Your account doesn't have access to this page. To proceed,
+		    please login with an account that has access.</p>
+		    {% else %}
+		    <p>Please login to see this page.</p>
+		    {% endif %}
+		{% endif %}
+
+		<form class="form-signin" method="post" action="/accounts/login/">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			{% csrf_token %}
+			{% bootstrap_form form layout="horizontal" %}
+			{% buttons submit="login"%}{% endbuttons %}
+			<input type="hidden" name="next" value="{{ next }}" />
+		</form>
+	</div> <!-- container -->
+{% endblock %}
