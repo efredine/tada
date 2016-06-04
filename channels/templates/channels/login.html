@@ -64,7 +64,7 @@ body {
 			<h2 class="form-signin-heading">Please sign in</h2>
 			{% csrf_token %}
 			{% bootstrap_form form %}
-			{% buttons submit="login"%}{% endbuttons %}
+			{% bootstrap_button "login" button_type="submit" button_class="btn-lg btn-primary btn-block" %}
 			<input type="hidden" name="next" value="{{ next }}" />
 		</form>
 	</div> <!-- container -->
