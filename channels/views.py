@@ -6,14 +6,14 @@ from .models import Channel
 
 class ChannelHasUserMixin(AccessMixin):
     """
-    Mixin for the channel detail view which verifies the channel has the current user.
+    Mixin that verifies a channel has the current user.
     """
     
     raise_exception = True
     permission_denied_message = "You don't have access to this channel."
           
     def channel_has_user(self, channel):
-        return self.request.user in channel.users.all()
+        return channel.users.filter(id=self.request.user.id).exists()
     
     def get_object(self):
         retrieved_object = super(ChannelHasUserMixin, self).get_object()
@@ -29,6 +29,6 @@ class ChannelListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         return Channel.objects.filter(users=self.request.user).order_by('name')
          
-class ChannelDetailView(LoginRequiredMixin,  ChannelHasUserMixin, generic.DetailView):
+class ChannelDetailView(LoginRequiredMixin, ChannelHasUserMixin, generic.DetailView):
     model = Channel
     template_name = 'channels/channel_detail.html'
