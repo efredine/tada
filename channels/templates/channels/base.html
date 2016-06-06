@@ -1,12 +1,18 @@
 {% extends 'bootstrap3/bootstrap3.html' %}
 {% load bootstrap3 %}
+{% load staticfiles %}
 
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
+{% block bootstrap3_title %}Tada{% endblock %}
+
+{% block bootstrap3_extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'channels/style.css' %}">
+{% endblock %}
+
 {% block bootstrap3_content %}
 <div class="container">
-	
 	
 	<!-- Static navbar -->
 	      <nav class="navbar navbar-default">

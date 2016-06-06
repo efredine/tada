@@ -3,13 +3,25 @@
 
 {% block title %}
 	<h2>{{ user.username}} : {{ channel.name }}</h2>
-	<h5>---posts---</h5>
 {% endblock %}
 
 {% block content %}
-	<ul>
 	{% for post in post_list %}
-		<li>{{ post.post_text }}</li>
+		<div class="row post">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class="col-sm-6">
+						<h4>{{ post.user.username }}</h3>
+					</div>
+					<div class="col-sm-6 text-right">
+						{{ post.creation_date|date:"D d M Y" }} 
+						{{ post.creation_date|time:"H:i" }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12">{{ post.post_text }}</div>
+				</div>
+			</div>
+		</div>
 	{% endfor %}
-	</ul>
 {% endblock %}
