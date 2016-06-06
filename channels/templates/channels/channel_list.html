@@ -2,13 +2,12 @@
 {% load bootstrap3 %}
 
 {% block title %}
-<h2>{{ user.username }}</h2>
-<h5>---channels---</h5>
+<h2>Channels for {{ user.username }} </h2>
 {% endblock %}
 
 {% block content %}
 	{% if channel_list %}
-		<ul>
+		<ul class="list-unstyled channel-list">
 		{% for channel in channel_list %}
 			<li><a href="{% url 'channels:channel_detail' channel.id %}">{{ channel.name }}</a></li>
 		{% endfor %}
