@@ -6,6 +6,13 @@
 {% endblock %}
 
 {% block content %}
+	<div class="row post_form">
+		<form method="post" class="col-sm-12">
+			{% csrf_token %}
+			{% bootstrap_form channel_post_form %}
+			{% bootstrap_button "post" button_type="submit" button_class="btn-primary pull-right" %}
+		</form>
+	</div>
 	{% for post in post_list %}
 		<div class="row post">
 			<div class="col-sm-12">
