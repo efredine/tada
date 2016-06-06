@@ -32,3 +32,8 @@ class ChannelListView(LoginRequiredMixin, generic.ListView):
 class ChannelDetailView(LoginRequiredMixin, ChannelHasUserMixin, generic.DetailView):
     model = Channel
     template_name = 'channels/channel_detail.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super(ChannelDetailView, self).get_context_data(**kwargs)
+        context['post_list'] = self.object.post_set.order_by('-creation_date')
+        return context

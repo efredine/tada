@@ -8,7 +8,7 @@
 
 {% block content %}
 	<ul>
-	{% for post in channel.post_set.all %}
+	{% for post in post_list %}
 		<li>{{ post.post_text }}</li>
 	{% endfor %}
 	</ul>
